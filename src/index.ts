@@ -4,7 +4,7 @@ import { connectDB } from "./config/database";
 import { createServer} from "http";
 import { Server } from "socket.io";
 import Database from "./models/schema";
-
+const PORT = process.env.PORT || 3000
 const app=express()
 app.use(express.json())
 app.use(cors())
@@ -67,6 +67,6 @@ io.on("connection", (socket) => {
 });
 
 
-httpserver.listen(3000 , "0.0.0.0" ,()=>{
-    console.log("Server is listening with websocket on 3000")
+httpserver.listen( PORT ,()=>{
+    console.log("Server is listening on port ", PORT)
 })
