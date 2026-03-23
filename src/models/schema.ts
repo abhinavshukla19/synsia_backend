@@ -5,6 +5,8 @@ const noteSchema: Schema = new Schema(
     documentId: {
       type: String,
       required: true,
+      unique: true,
+      trim: true,
     },
     content: {
       type: String,
@@ -13,6 +15,8 @@ const noteSchema: Schema = new Schema(
   },
   { timestamps: true } 
 );
+
+noteSchema.index({ documentId: 1 }, { unique: true });
 
 
 const Database = mongoose.model("Note", noteSchema);
